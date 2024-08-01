@@ -48,6 +48,11 @@ body {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.wrapper:hover {
+    transform: translateY(-5px);
 }
 
 .hero-img {
@@ -56,6 +61,36 @@ body {
     background-size: cover;
     width: 100%;
     height: 200px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.hero-img:hover {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hero-img:hover .image-overlay {
+    opacity: 1;
+}
+
+.image-overlay p {
+    color: white;
+    font-weight: var(--font-weight-bold);
 }
 
 .text-content {
@@ -74,13 +109,33 @@ p {
     margin-bottom: 1rem;
 }
 
+.read-more-toggle {
+    color: var(--desaturated-dark-blue);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.read-more-toggle:hover {
+    color: var(--dark-gray-blue);
+}
+
+.read-more-content {
+    margin-top: 1rem;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.read-more-content.show {
+    max-height: 300px;
+    opacity: 1;
+}
+
 /* Share Section */
 .article-footer {
     position: relative;
-}
-
-.share-inactive {
-    padding-left: 2rem;
 }
 
 .share-inactive,
@@ -88,7 +143,7 @@ p {
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: space-between;
     transition: all 0.3s ease;
 }
 
@@ -107,7 +162,6 @@ p {
     flex-direction: column;   
 }
 
-
 .user-details p {
     text-align: left; 
     margin: 0;
@@ -116,6 +170,11 @@ p {
 .avatar {
     border-radius: 50%;
     margin-right: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
 }
 
 .share-button {
@@ -124,12 +183,13 @@ p {
     background-color: var(--light-grayish-blue);
     padding: 0.5rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .share-button:hover,
 .share-button:focus {
     background-color: var(--grayish-blue);
+    transform: rotate(90deg);
 }
 
 .share-icon {
@@ -147,13 +207,8 @@ p {
     background-color: var(--dark-gray-blue);
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    
-}
-
-.user-details {
-    text-align: left;
 }
 
 .share-active p {
@@ -161,16 +216,6 @@ p {
     text-transform: uppercase;
     letter-spacing: 3px;
     margin: 0;
-}
-
-.share-active {
-    padding: 1rem 2rem;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
-    min-height: 82px;
 }
 
 .social-links {
@@ -185,40 +230,37 @@ p {
 
 .social-links a:hover,
 .social-links a:focus {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
-button {
-    margin-left: auto;}
-    
-    /* Footer */
-    footer {
-        margin-top: 2rem;
-        text-align: center;
-    }
-    
-    .attribution {
-        font-size: 0.7rem;
-        color: var(--desaturated-dark-blue);
-    }
-    
-    .attribution a {
-        color: var(--dark-gray-blue);
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-    
-    .attribution a:hover,
-    .attribution a:focus {
-        color: var(--desaturated-dark-blue);
-        text-decoration: underline;
-    }
-    
-    .hidden {
-        display: none;
-    }
-    
-    /* Media Queries */
+/* Footer */
+footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.attribution {
+    font-size: 0.7rem;
+    color: var(--desaturated-dark-blue);
+}
+
+.attribution a {
+    color: var(--dark-gray-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.attribution a:hover,
+.attribution a:focus {
+    color: var(--desaturated-dark-blue);
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Media Queries */
 @media screen and (min-width: 768px) {
     .wrapper {
         display: flex;
@@ -229,7 +271,7 @@ button {
     .hero-img {
         width: 40%;
         height: auto;
-        min-height: 280px; /* Adjust this value as needed */
+        min-height: 280px;
         background-size: cover;
         background-position: center left;
     }
@@ -275,11 +317,11 @@ button {
         border-top: 10px solid var(--dark-gray-blue);
     }
 
-.share-active > button {
-    display: none;
-}
+    .share-active > button {
+        display: none;
+    }
 
     .share-inactive {
-        padding-left: 0rem;
+        display: flex;
     }
 }
