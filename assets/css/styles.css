@@ -79,6 +79,10 @@ p {
     position: relative;
 }
 
+.share-inactive {
+    padding-left: 2rem;
+}
+
 .share-inactive,
 .share-active {
     padding: 1rem 2rem;
@@ -276,6 +280,6 @@ button {
 }
 
     .share-inactive {
-        display: flex;
+        padding-left: 0rem;
     }
 }
