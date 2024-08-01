@@ -216,6 +216,20 @@ footer {
 
 /* Media Queries */
 @media screen and (min-width: 768px) {
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        }
+        
+        .hero-img { grid-area: 1 / 1 / 2 / 2; }
+        .grid-wrapper { grid-area: 1 / 2 / 2 / 3; }
+        
+/* 
+
     .content {
         display: flex;
         flex-wrap: wrap;
@@ -257,4 +271,4 @@ footer {
         border-right: 10px solid transparent;
         border-top: 10px solid var(--dark-gray-blue);
     }
-}
+} */
