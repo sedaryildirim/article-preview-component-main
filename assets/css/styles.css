@@ -166,7 +166,7 @@ p {
     flex-direction: row;
     justify-content: left;
     align-items: center;
-
+min-height: 82px;
 }
 
 .social-links {
